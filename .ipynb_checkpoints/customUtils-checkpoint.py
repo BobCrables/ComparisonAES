@@ -26,14 +26,30 @@ def get_optimizer(opt):
     
     return optimizer
 
-def preprocess_asap(essay_type,VALIDATION_SPLIT,TEST_SPLIT):
+def limits(essay_type):
     """
-    Accepts an essay prompt and returns train, test and validation sets.
-    
-    
+    Returns the maximum/minimum scores for a essay set
     """
-    glove_dir = "glove.6B.300d.txt"
     data_dir = "data/training_set.tsv"
+    originals = []
+    
+    fp=open(data_dir,'r', encoding="ascii", errors="ignore")
+    fp.readline()
+    for line in fp:
+        temp=line.split("\t")
+        if(temp[1]==essay_type): ## why only 4 ?? - evals in prompt specific fashion
+            originals.append(float(temp[6]))
+    fp.close()
+
+    print("Min Score:", min(originals) , "| Max Score:", max(originals))
+    range_min = min(originals)
+    range_max = max(originals)
+    return range_max, range_min
+
+def preprocess_asap(essay_type,VALIDATION_SPLIT,TEST_SPLIT, glove_dir, data_dir):
+    """
+    Accepts an essay prompt and returns train, test and validation set embeddings.
+    """
     
     EMBEDDING_DIM=300
     MAX_NB_WORDS=4000
@@ -54,6 +70,8 @@ def preprocess_asap(essay_type,VALIDATION_SPLIT,TEST_SPLIT):
         glove_emb[temp[0]]=np.asarray([float(i) for i in temp[1:]])
 
     print("Embedding done!")
+    
+    range_max, range_min = limits(essay_type)
     
     fp=open(data_dir,'r', encoding="ascii", errors="ignore")
     fp.readline()
@@ -134,20 +152,3 @@ def preprocess_asap(essay_type,VALIDATION_SPLIT,TEST_SPLIT):
     print('Done.')
     
     return x_train, y_train, x_val, y_val, x_test, y_test, embedding_layer
-
-def limits(essay_type):
-    data_dir = "data/training_set.tsv"
-    originals = []
-    
-    fp=open(data_dir,'r', encoding="ascii", errors="ignore")
-    fp.readline()
-    for line in fp:
-        temp=line.split("\t")
-        if(temp[1]==essay_type): ## why only 4 ?? - evals in prompt specific fashion
-            originals.append(float(temp[6]))
-    fp.close()
-
-    print("Min Score:", min(originals) , "| Max Score:", max(originals))
-    range_min = min(originals)
-    range_max = max(originals)
-    return range_max, range_min
