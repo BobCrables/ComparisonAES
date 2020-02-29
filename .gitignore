@@ -1,6 +1,12 @@
-
+.ipynb_checkpoints/
+.idea/
+__pycache__/
+data/.ipynb_checkpoints/
+models/.ipynb_checkpoints/
+mysite/mysite/__pycache__
 glove.6B.300d.txt
 glove.6B.50d.txt
+utils/__pycache__
 *.h5
 *.png
 *.pkl
