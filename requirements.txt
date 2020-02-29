@@ -1,0 +1,13 @@
+spacy==2.2.3
+scikit-learn==0.21.3
+tensorflow==2.0.0
+numpy==1.17.3
+nltk==3.4.5
+matplotlib==3.1.1
+language-check==1.1
+Keras==2.3.1
+Keras-Preprocessing==1.1.0
+genism==3.8.1
+Django==3.0.1
+django-widget-tweaks==1.4.5
+DateTime==4.3
