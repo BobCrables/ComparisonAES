@@ -4,3 +4,5 @@ glove.6B.50d.txt
 *.h5
 *.png
 *.pkl
+*.docx
+*.pdf

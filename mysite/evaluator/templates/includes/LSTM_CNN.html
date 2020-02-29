@@ -1,0 +1,11 @@
+<div class="card-columns" style="padding-top: 16px">
+    {% for score in score %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5>{{ score.model_name }}</h5>
+            {% include 'includes/form.html' %}
+            <p style="text-align: center;"><b style="font-size: 20px;">Score: <br /> {{ score.model_pred }}</b></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
