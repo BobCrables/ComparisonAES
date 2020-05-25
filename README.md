@@ -1,5 +1,5 @@
 # CAS: The Comparative Automated Scoring Model
-Code for "[A Comparison of Training Models on the Accuracy of Artificial Essay](https://linkhere)".
+Code for the AP Research paper: "[A Comparison of Training Models on the Accuracy of Artificial Essay](https://github.com/DavidHeineman/ComparisonAES/raw/master/data/A%20Comparison%20of%20Training%20Models%20on%20the%20Accuracy%20of%20Artificial%20Essay%20Scoring%20Systems.pdf)".
 
 
 ## Requirements
